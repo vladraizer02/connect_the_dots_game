@@ -1,0 +1,188 @@
+import pygame
+ 
+pygame.init()
+size = width, height = 350, 500
+screen = pygame.display.set_mode(size)
+ 
+ 
+class Board:
+    # создание поля
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+        self.board = [[0 for _ in range(width)] for _ in range(height)]
+        # значения по умолчанию
+        if width == 4:
+            self.left = 35
+            self.top = 115
+            self.cell_size = 70
+        elif width == 5:
+            self.left = 35
+            self.top = 115
+            self.cell_size = 56
+        elif width == 6:
+            self.left = 35
+            self.top = 115
+            self.cell_size = 46
+        elif width == 7:
+            self.left = 35
+            self.top = 115
+            self.cell_size = 40  
+        elif width == 8:
+            self.left = 35
+            self.top = 115
+            self.cell_size = 35
+        elif width == 9:
+            self.left = 35
+            self.top = 115
+            self.cell_size = 31      
+        self.radius = self.cell_size//2
+ 
+    # настройка внешнего вида
+    def set_view(self, left, top, cell_size):
+        self.left = left
+        self.top = top
+        self.cell_size = cell_size
+        
+    def render(self):
+        white = pygame.Color(255, 255, 255)
+        for i in range(self.height):
+            for g in range(self.width):
+                pygame.draw.rect(screen, white, (self.left+self.cell_size*g, self.top+self.cell_size*i, self.cell_size, self.cell_size), 1)
+                if self.width == 5:
+                    pygame.draw.circle(screen, pygame.Color("red"), (self.left+(self.cell_size-self.radius), self.top+(self.cell_size*2-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("red"), (self.left+(self.cell_size*4-self.radius), self.top+(self.cell_size-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("green"), (self.left+(self.cell_size*5-self.radius), self.top+(self.cell_size-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("green"), (self.left+(self.cell_size-self.radius), self.top+(self.cell_size*5-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("blue"), (self.left+(self.cell_size*2-self.radius), self.top+(self.cell_size*5-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("blue"), (self.left+(self.cell_size*4-self.radius), self.top+(self.cell_size*4-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("yellow"), (self.left+(self.cell_size*3-self.radius), self.top+(self.cell_size*3-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("yellow"), (self.left+(self.cell_size*3-self.radius), self.top+(self.cell_size*5-self.radius)), (self.radius)-4)
+                    font = pygame.font.Font(None, 50)
+                    text = font.render("Level1", 1, (100, 255, 100))
+                    text2 = font.render("5x5", 1, (100, 255, 100))
+                    text_x = 120
+                    text_y = 30
+                    text_x2 = 140
+                    text_y2 = 80                    
+                    screen.blit(text, (text_x, text_y))
+                    screen.blit(text2, (text_x2, text_y2))
+                    
+                elif self.width == 6:
+                    pygame.draw.circle(screen, pygame.Color("red"), (self.left+(self.cell_size*2-self.radius), self.top+(self.cell_size*3-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("red"), (self.left+(self.cell_size*4-self.radius), self.top+(self.cell_size*3-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("green"), (self.left+(self.cell_size*2-self.radius), self.top+(self.cell_size*2-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("green"), (self.left+(self.cell_size*3-self.radius), self.top+(self.cell_size*6-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("blue"), (self.left+(self.cell_size*3-self.radius), self.top+(self.cell_size*5-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("blue"), (self.left+(self.cell_size*5-self.radius), self.top+(self.cell_size*5-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("yellow"), (self.left+(self.cell_size*4-self.radius), self.top+(self.cell_size*6-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("yellow"), (self.left+(self.cell_size*6-self.radius), self.top+(self.cell_size*2-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("orange"), (self.left+(self.cell_size-self.radius), self.top+(self.cell_size*6-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("orange"), (self.left+(self.cell_size*6-self.radius), self.top+(self.cell_size-self.radius)), (self.radius)-4)
+                    font = pygame.font.Font(None, 50)
+                    text = font.render("Level2", 1, (255, 165, 0))
+                    text2 = font.render("6x6", 1, (255, 165, 0))
+                    text_x = 120
+                    text_y = 30
+                    text_x2 = 140
+                    text_y2 = 80                    
+                    screen.blit(text, (text_x, text_y))
+                    screen.blit(text2, (text_x2, text_y2))                    
+                elif self.width == 7:
+                    pygame.draw.circle(screen, pygame.Color("red"), (self.left+(self.cell_size*7-self.radius), self.top+(self.cell_size*4-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("red"), (self.left+(self.cell_size*2-self.radius), self.top+(self.cell_size*7-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("green"), (self.left+(self.cell_size*6-self.radius), self.top+(self.cell_size*4-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("green"), (self.left+(self.cell_size*4-self.radius), self.top+(self.cell_size*5-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("blue"), (self.left+(self.cell_size*7-self.radius), self.top+(self.cell_size*5-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("blue"), (self.left+(self.cell_size*7-self.radius), self.top+(self.cell_size*7-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("yellow"), (self.left+(self.cell_size*4-self.radius), self.top+(self.cell_size-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("yellow"), (self.left+(self.cell_size-self.radius), self.top+(self.cell_size*7-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("orange"), (self.left+(self.cell_size*3-self.radius), self.top+(self.cell_size*7-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("orange"), (self.left+(self.cell_size*6-self.radius), self.top+(self.cell_size*6-self.radius)), (self.radius)-4)   
+                    pygame.draw.circle(screen, pygame.Color("cyan"), (self.left+(self.cell_size*6-self.radius), self.top+(self.cell_size*2-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("cyan"), (self.left+(self.cell_size*6-self.radius), self.top+(self.cell_size*5-self.radius)), (self.radius)-4)
+                    font = pygame.font.Font(None, 50)
+                    text = font.render("Level3", 1, (139, 0, 255))
+                    text2 = font.render("7x7", 1, (139, 0, 255))
+                    text_x = 120
+                    text_y = 30
+                    text_x2 = 140
+                    text_y2 = 80                    
+                    screen.blit(text, (text_x, text_y))
+                    screen.blit(text2, (text_x2, text_y2))                    
+                elif self.width == 8:
+                    pygame.draw.circle(screen, pygame.Color("red"), (self.left+(self.cell_size*7-self.radius), self.top+(self.cell_size*4-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("red"), (self.left+(self.cell_size*8-self.radius), self.top+(self.cell_size*8-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("green"), (self.left+(self.cell_size*2-self.radius), self.top+(self.cell_size-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("green"), (self.left+(self.cell_size*4-self.radius), self.top+(self.cell_size*8-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("blue"), (self.left+(self.cell_size*3-self.radius), self.top+(self.cell_size*7-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("blue"), (self.left+(self.cell_size*6-self.radius), self.top+(self.cell_size*3-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("yellow"), (self.left+(self.cell_size*5-self.radius), self.top+(self.cell_size*3-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("yellow"), (self.left+(self.cell_size*4-self.radius), self.top+(self.cell_size*5-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("orange"), (self.left+(self.cell_size*8-self.radius), self.top+(self.cell_size*6-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("orange"), (self.left+(self.cell_size*5-self.radius), self.top+(self.cell_size*5-self.radius)), (self.radius)-4)   
+                    pygame.draw.circle(screen, pygame.Color("cyan"), (self.left+(self.cell_size*6-self.radius), self.top+(self.cell_size*7-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("cyan"), (self.left+(self.cell_size*8-self.radius), self.top+(self.cell_size*7-self.radius)), (self.radius)-4)
+                    font = pygame.font.Font(None, 50)
+                    text = font.render("Level4", 1, (255, 0, 0))
+                    text2 = font.render("8x8", 1, (255, 0, 0))
+                    text_x = 120
+                    text_y = 30
+                    text_x2 = 140
+                    text_y2 = 80                    
+                    screen.blit(text, (text_x, text_y))
+                    screen.blit(text2, (text_x2, text_y2))                    
+                elif self.width == 9:
+                    pygame.draw.circle(screen, pygame.Color("red"), (self.left+(self.cell_size*6-self.radius), self.top+(self.cell_size*4-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("red"), (self.left+(self.cell_size*6-self.radius), self.top+(self.cell_size*6-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("green"), (self.left+(self.cell_size*8-self.radius), self.top+(self.cell_size-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("green"), (self.left+(self.cell_size*9-self.radius), self.top+(self.cell_size*5-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("blue"), (self.left+(self.cell_size*2-self.radius), self.top+(self.cell_size*2-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("blue"), (self.left+(self.cell_size*5-self.radius), self.top+(self.cell_size*5-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("yellow"), (self.left+(self.cell_size*3-self.radius), self.top+(self.cell_size*2-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("yellow"), (self.left+(self.cell_size*7-self.radius), self.top+(self.cell_size*4-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("orange"), (self.left+(self.cell_size-self.radius), self.top+(self.cell_size*3-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("orange"), (self.left+(self.cell_size*3-self.radius), self.top+(self.cell_size*5-self.radius)), (self.radius)-4)   
+                    pygame.draw.circle(screen, pygame.Color("cyan"), (self.left+(self.cell_size*5-self.radius), self.top+(self.cell_size*6-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("cyan"), (self.left+(self.cell_size*9-self.radius), self.top+(self.cell_size*6-self.radius)), (self.radius)-4)   
+                    pygame.draw.circle(screen, pygame.Color("purple"), (self.left+(self.cell_size-self.radius), self.top+(self.cell_size*4-self.radius)), (self.radius)-4)
+                    pygame.draw.circle(screen, pygame.Color("purple"), (self.left+(self.cell_size*9-self.radius), self.top+(self.cell_size*7-self.radius)), (self.radius)-4)
+                    font = pygame.font.Font(None, 50)
+                    text = font.render("Level5", 1, (66, 170, 255))
+                    text2 = font.render("9x9", 1, (66, 170, 255))
+                    text_x = 120
+                    text_y = 30
+                    text_x2 = 140
+                    text_y2 = 80                    
+                    screen.blit(text, (text_x, text_y))
+                    screen.blit(text2, (text_x2, text_y2))                    
+        self.left_kon = self.left+self.cell_size*self.width
+        self.top_kon = self.top+self.cell_size*self.height
+        
+    def get_cell(self, mouse_pos):
+        if mouse_pos[0] > self.left and mouse_pos[0] < self.left_kon and mouse_pos[1] > self.top and mouse_pos[1] < self.top_kon:
+            print(mouse_pos[0], mouse_pos[1], self.left, self.left_kon, self.top, self.top_kon)
+            return mouse_pos
+        else:
+            return None
+        
+    def on_click(self, cell_coords): pass    
+    
+    def get_click(self, mouse_pos):
+        cell = self.get_cell(mouse_pos)
+        self.on_click(cell)    
+        
+ 
+board = Board(9, 9)
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.MOUSEBUTTONUP:
+            drawing = True
+            board.get_click(event.pos)
+            
+    screen.fill((0, 0, 0))
+    board.render()
+    pygame.display.flip()
