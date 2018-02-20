@@ -8,7 +8,7 @@ screen = pygame.display.set_mode(size)
  
  
 class Board:
-    # создание поля
+    # СЃРѕР·РґР°РЅРёРµ РїРѕР»СЏ
     def __init__(self, width, height):
         self.width = width
         self.height = height
@@ -16,7 +16,7 @@ class Board:
         self.left = 35
         self.top = 115
         self.cell_size = 60
-        # значения по умолчанию
+        # Р·РЅР°С‡РµРЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
         if width == 5:
             self.cell_size = 56
         elif width == 6:
@@ -30,7 +30,7 @@ class Board:
         self.radius = self.cell_size//2
         self.spisok_button_GAME = []
  
-    # настройка внешнего вида
+    # РЅР°СЃС‚СЂРѕР№РєР° РІРЅРµС€РЅРµРіРѕ РІРёРґР°
     def set_view(self, left, top, cell_size):
         self.left = left
         self.top = top
@@ -272,7 +272,7 @@ class AnimatedSprite(pygame.sprite.Sprite):
     
 running = True
 gui = button_GAME.GUI()
-gui.add_element(button_GAME.Button((130,230,60,60),"Да"))
+gui.add_element(button_GAME.Button((130,230,60,60),"Р”Р°"))
 k = 0
 w_p = 5
 h_p = 5
@@ -297,12 +297,12 @@ while running:
         gui.update()
  
         font = pygame.font.SysFont('arial', 29)
-        text = font.render("Добро пожаловать в игру CTD!", 1, (0, 0, 255))
+        text = font.render("Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РІ РёРіСЂСѓ CTD!", 1, (0, 0, 255))
         text_x = 5
         text_y = 10               
         screen.blit(text, (text_x, text_y))
         font1 = pygame.font.SysFont('arial', 36)
-        text1 = font1.render("Хотите начать игру?", 1, (0, 0, 255))
+        text1 = font1.render("РҐРѕС‚РёС‚Рµ РЅР°С‡Р°С‚СЊ РёРіСЂСѓ?", 1, (0, 0, 255))
         text_x1 = 35
         text_y1 = 130               
         screen.blit(text1, (text_x1, text_y1))
@@ -357,7 +357,7 @@ while running:
                 running = False
         screen.fill((0, 0, 0))
         font = pygame.font.SysFont('arial', 50)
-        text = font.render("Вы прошли игру!", 1, (0, 0, 255))
+        text = font.render("Р’С‹ РїСЂРѕС€Р»Рё РёРіСЂСѓ!", 1, (0, 0, 255))
         text_x = 15
         text_y = 20               
         screen.blit(text, (text_x, text_y))    
