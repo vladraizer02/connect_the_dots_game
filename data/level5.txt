@@ -1,0 +1,9 @@
+. . orange purple . . . . .
+. blue . . . . . . .
+. yellow . . orange . . . .
+. . . . . . . . .
+. . . . blue cyan . . .
+. . . red . red . . .
+. . . yellow . . . . .
+green . . . . . . . .
+. . . . green cyan purple . .

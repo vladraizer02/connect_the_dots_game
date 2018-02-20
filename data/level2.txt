@@ -1,0 +1,6 @@
+. . . . . orange
+. green red . . .
+. . . . blue green
+. . red . . yellow
+. . . . blue .
+orange yellow . . . .
